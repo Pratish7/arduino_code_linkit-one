@@ -24,19 +24,20 @@ void check()
   if (command.substring(0, 1).equals("S"))
   {
     msg();
+    return;
   }
 }
 
 void msg()
 {
   for (int i = 0; i < command.length(); i++)
+  {
+    if (command.substring(i, i + 1).equals("T"))
     {
-      if (command.substring(i, i + 1).equals("T"))
-      { 
-        sms_text = command.substring(i + 1, command.length());
-        number = command.substring(1, i);
-      }
+      sms_text = command.substring(i + 1, command.length());
+      number = command.substring(1, i);
     }
+  }
   if (sms_text.length() > 0)
   {
     number.toCharArray(charbuffer, 20);

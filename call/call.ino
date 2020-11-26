@@ -24,6 +24,7 @@ void check()
   {
     number = command.substring(1, command.length());
     call();
+    return;
   }
 }
 
@@ -34,20 +35,39 @@ void call()
     number.toCharArray(charbuffer, 20);
     if (LVoiceCall.voiceCall(charbuffer))
     {
-      Serial.println("call eshtablished");
+      Serial.println("called");
       while (Serial.available() <= 0)
       {
       }
       if (Serial.available() > 0)
       {
-        if(Serial.readString()=="0"){
-        if (LVoiceCall.hangCall())
+        if (Serial.readString() == "0")
         {
-          Serial.println("call ended");
-          return;
-        }
+          if (LVoiceCall.hangCall())
+          {
+            Serial.println("call ended");
+            return;
+            number = "";
+          }
+          else
+          {
+            return;
+            number = "";
+          }
         }
       }
     }
+    else
+    {
+      Serial.print("call failed");
+      return;
+      number = "";
+    }
+  }
+  else
+  {
+    Serial.print("call failed");
+    return;
+    number = "";
   }
 }
