@@ -37,6 +37,9 @@ void msg()
       sms_text = command.substring(i + 1, command.length());
       number = command.substring(1, i);
     }
+    else{
+      return;
+    }
   }
   if (sms_text.length() > 0)
   {
@@ -45,13 +48,16 @@ void msg()
     LSMS.print(sms_text);
     if (LSMS.endSMS())
     {
-      Serial.println("SMS is sent");
+      Serial.println("MESSAGE SENT");
       return;
     }
     else
     {
-      Serial.println("SMS is not sent");
+      Serial.println("FAILED");
       return;
     }
+  }
+  else{
+    return;
   }
 }
