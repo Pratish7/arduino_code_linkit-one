@@ -11,7 +11,11 @@ void setup()
 
 void loop()
 {
-  while (Serial.available() > 0)
+  Serial.println("ready");
+  while (Serial.available() <= 0)
+  {
+  }
+  if (Serial.available() > 0)
   {
     check();
   }
