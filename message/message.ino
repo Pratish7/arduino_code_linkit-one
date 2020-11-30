@@ -1,17 +1,18 @@
 #include <LGSM.h>
 
-String command;
+String command = "";
 String number = "";
 char charbuffer[20];
 String sms_text;
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop()
 {
+  Serial.println("ready");
   while (Serial.available() > 0)
   {
     check();
@@ -26,6 +27,12 @@ void check()
     msg();
     return;
   }
+  else
+  {
+    number = "";
+    command = "";
+    return;
+  }
 }
 
 void msg()
@@ -37,9 +44,6 @@ void msg()
       sms_text = command.substring(i + 1, command.length());
       number = command.substring(1, i);
     }
-    else{
-      return;
-    }
   }
   if (sms_text.length() > 0)
   {
@@ -49,15 +53,22 @@ void msg()
     if (LSMS.endSMS())
     {
       Serial.println("MESSAGE SENT");
+      number = "";
+      command = "";
       return;
     }
     else
     {
       Serial.println("FAILED");
+      number = "";
+      command = "";
       return;
     }
   }
-  else{
+  else
+  {
+    number = "";
+    command = "";
     return;
   }
 }
