@@ -6,12 +6,12 @@ char charbuffer[20];
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop()
 {
-  Serial.println("ready");
+  Serial.println("READY");
   while (Serial.available() <= 0)
   {
   }
@@ -49,29 +49,29 @@ void call()
         {
           if (LVoiceCall.hangCall())
           {
-            Serial.println("call ended");
-            return;
+            Serial.println("CALL RUNNING");
             number = "";
+            return;
           }
           else
           {
-            return;
             number = "";
+            return;
           }
         }
       }
     }
     else
     {
-      Serial.print("call failed");
-      return;
+      Serial.print("CALL FAILED");
       number = "";
+      return;
     }
   }
   else
   {
-    Serial.print("call failed");
-    return;
+    Serial.print("CALL FAILED");
     number = "";
+    return;
   }
 }
