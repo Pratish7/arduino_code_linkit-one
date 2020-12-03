@@ -12,7 +12,7 @@ void setup()
 
 void loop()
 {
-  Serial.println("ready");
+  Serial.println("READY");
   while (Serial.available() <= 0)
   {
   }
@@ -55,7 +55,7 @@ void msg()
     LSMS.print(sms_text);
     if (LSMS.endSMS())
     {
-      delay(2000);
+      delay(1000);
       Serial.println("MESSAGE SENT");
       number = "";
       command = "";
@@ -63,7 +63,7 @@ void msg()
     }
     else
     {
-      delay(2000);
+      delay(1000);
       Serial.println("FAILED");
       number = "";
       command = "";
