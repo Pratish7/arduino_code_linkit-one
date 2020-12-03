@@ -3,7 +3,7 @@
 String command = "";
 String number = "";
 char charbuffer[20];
-String sms_text;
+String sms_text = "";
 
 void setup()
 {
@@ -34,6 +34,7 @@ void check()
   {
     number = "";
     command = "";
+    sms_text = "";
     return;
   }
 }
@@ -59,6 +60,7 @@ void msg()
       Serial.println("MESSAGE SENT");
       number = "";
       command = "";
+      sms_text = "";
       return;
     }
     else
@@ -67,6 +69,7 @@ void msg()
       Serial.println("FAILED");
       number = "";
       command = "";
+      sms_text = "";
       return;
     }
   }
@@ -74,6 +77,7 @@ void msg()
   {
     number = "";
     command = "";
+    sms_text = "";
     return;
   }
 }
